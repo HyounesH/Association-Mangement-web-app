@@ -1,0 +1,87 @@
+<app-toolbar></app-toolbar>
+<div class="content-wrapper">
+
+
+
+  <div class="content">
+      <div class="doc data-table-doc page-layout simple full-width">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-1"><h3 class="doc-title" id="content">
+&nbsp;&nbsp;&nbsp;
+<span class="icon s-8 icon-view-list"></span>
+liste des dons</h3></div>
+<!-- / HEADER -->
+
+<!-- CONTENT -->
+<div class="page-content row p-6 container">
+
+  <div class="col-12">
+
+      <div class="example">
+          <div class="description">
+              <div class="description-text">
+                  <h3>Liste de vos dons</h3>
+              </div>
+          </div>
+          <div class="source-preview-wrapper"><div class="preview">
+            <div class="preview-elements">
+            <div class="preview-tables">
+          <table id="sample-data-table" class="table">
+              <thead>
+                  <tr>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Description</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Date de réception</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Etat de réception</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Receveur de don</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                         <div class="table-header">
+                           <span class="column-title">Rôle</span>
+                         </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Détails</span>
+                          </div>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let don of listDon">
+                <td>{{don.description_don}}</td>
+                <td>{{don.date_don}}</td>
+                <td>{{don.etat}}</td>
+                <td>{{don.nomComplet}}</td>
+                <td>{{don.role}}</td>
+                <td><a (click)="navigateToDetails(don.id_don)">&nbsp;<span class="icon icon-arrow-right s-8"></span> &nbsp;</a></td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+

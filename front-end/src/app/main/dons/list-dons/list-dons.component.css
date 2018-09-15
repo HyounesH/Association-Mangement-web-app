@@ -1,0 +1,27 @@
+.description{
+  display:flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  color:white;
+  background: black;
+}
+tbody td a .icon-update:hover{
+color: green;
+}
+tbody td a .icon-account-card-details:hover {
+color:rgba(0, 0, 255, 0.822);
+}
+tbody td button .icon-delete:hover {
+color:red;
+}
+tbody td button{
+background-color: white;
+}
+div .alert-danger{
+  font-size: 15px !important;
+  margin-top: 3px;
+  padding: 6px !important;
+  }

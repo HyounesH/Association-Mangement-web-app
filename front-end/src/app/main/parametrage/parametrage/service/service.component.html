@@ -1,0 +1,209 @@
+<div class="content-wrapper">
+  <div class="content">
+      <div class="page-layout simple left-sidebar-floating">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-6">
+
+  <div class="d-flex flex-row align-items-center">
+
+      <button type="button" class="sidebar-toggle-button btn btn-icon d-block d-lg-none mr-2">
+          <i class="icon icon-menu"></i>
+      </button>
+
+      <span class="h3"><span class="icon icon-settings s-8"></span> &nbsp;Paramétrage</span>
+
+  </div>
+</div>
+<!-- / HEADER -->
+
+<div class="page-content-wrapper">
+      <div class="page-sidebar-card p-6" id="side-bare">
+          <!-- DEMO CONTENT -->
+
+       <div class="p-6">
+       <button type="button" class="btn btn-secondary btn-block">COMPOSE</button>
+       </div>
+          <div class="demo-sidebar">
+            <ul class="nav flex-column">
+
+              <li class="nav-item">
+                <a class="nav-link ripple" (click)="NavigateToStructure()">
+                    <i class="icon s-4 icon-inbox"></i>
+                    <span>Structure</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link ripple" (click)="NavigateToDepartement()">
+                    <i class="icon s-4 icon-window-maximize"></i>
+                    <span>Departement</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="active">
+                <a class="nav-link ripple" (click)="NavigateToService()">
+                    <i class="icon s-4 icon-microsoft"></i>
+                    <span>Service</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link ripple" (click)="NavigateToActivite()">
+                    <i class="icon s-4 icon-radioactive"></i>
+                    <span>Activité</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ripple" (click)="NavigateToCommunaute()">
+                    <i class="icon s-4 icon-language-c"></i>
+                    <span>Communaute</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ripple" (click)="NavigateToProfession()">
+                    <i class="icon s-4 icon-adjust"></i>
+                    <span>Profession</span>
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ripple" (click)="NavigateToBureauVote()">
+                  <i class="icon s-4 icon-home-modern"></i>
+                  <span>Bureau vote</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ripple" (click)="NavigateToFonction()">
+                <i class="icon s-4 icon-cube-outline"></i>
+                <span>Fonction</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ripple" (click)="NavigateTotypeAction()">
+              <i class="icon s-4 icon-view-list"></i>
+              <span>Type Action</span>
+          </a>
+        </li>
+              </ul>
+</div>
+          <!-- / DEMO CONTENT -->
+      </div>
+
+
+  <!-- CONTENT -->
+   <div class="page-content p-6">
+    <div class="demo-content p-6" id="table-content">
+      <div class="btn-config-div">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#newServiceModal" data-keyboard="true" (click)="nouveauService()">Ajouter</button>
+      </div>
+       <table class="table table-stripped">
+           <thead>
+             <tr>
+             <th>Nom</th>
+             <th>adresse</th>
+             <th>Opération</th>
+             </tr>
+           </thead>
+           <tbody>
+           <tr *ngFor="let s of serviceList">
+           <td>{{s.nom}}</td>
+           <td>{{s.adresse}}</td>
+           <td>
+               <button data-toggle="modal" data-target="#updateServiceModal" data-keyboard="true" (click)="updateSevice(s)"><span class="icon s-5 icon-update"></span></button>
+               <button data-toggle="modal" data-target="#modalId"  data-keyboard="true"  (click)="serviceToDelete(s)"><span class="icon s-5 icon-delete"></span></button>
+             </td>
+           </tr>
+           </tbody>
+          </table>
+    </div>
+    </div>
+  <!-- / CONTENT -->
+</div>
+</div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="modalId" >
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Suppression d'un service</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>voulez-vous vraiment supprimer ce service ?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="deleteService()">Confirmer</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--new service modal-->
+
+<div class="modal fade" id="newServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" >{{status_service}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="recipient-name" class="form-control-label">Nom:</label>
+                      <input type="text" class="form-control" id="recipient-name" name="nom"   [(ngModel)]="service.nom" />
+                  </div>
+                  <div class="form-group">
+                      <label for="message-text" class="form-control-label">Adresse:</label>
+                      <input type="text" class="form-control" id="message-text" name="adresse" [(ngModel)]="service.adresse" />
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" #addService>Close</button>
+              <button type="button" class="btn btn-primary" (click)="add()">{{status}}</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--update service modal-->
+
+<div class="modal fade" id="updateServiceModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" >{{status_service}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="recipient-name" class="form-control-label">Nom:</label>
+                      <input type="text" class="form-control" id="recipient-name" name="nom"   [(ngModel)]="service.nom" />
+                  </div>
+                  <div class="form-group">
+                      <label for="message-text" class="form-control-label">Adresse:</label>
+                      <input type="text" class="form-control" id="message-text" name="adresse" [(ngModel)]="service.adresse" />
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" #addService>Close</button>
+              <button type="button" class="btn btn-primary" (click)="update()">{{status}}</button>
+          </div>
+      </div>
+  </div>
+</div>

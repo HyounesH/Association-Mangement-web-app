@@ -1,0 +1,32 @@
+.page-content {
+  padding: 20px !important;
+}
+.page-header{
+  padding: 10px !important;
+  height: 17% !important;
+}
+.row-top{
+margin-top:2%;
+margin-left:1px;
+}
+.card-img-top{
+   height: 90%!important;
+   width: 90%!important;
+}
+.alert{
+  padding: 6px !important;
+  background-color:#2196E3!important;
+  color: white;
+  font-size: 17px;
+}
+#middle{
+  margin-left: 1px!important;
+}
+.badge{
+  margin-left: 3% !important;
+  margin-bottom: 3%!important;
+  margin-top: 3%!important;
+}
+.badge:hover{
+background-color: rgb(21, 38, 192);
+}

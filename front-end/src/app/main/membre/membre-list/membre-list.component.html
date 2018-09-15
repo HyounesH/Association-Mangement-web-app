@@ -1,0 +1,119 @@
+<div class="content-wrapper">
+
+
+
+  <div class="content">
+      <div class="doc data-table-doc page-layout simple full-width">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+<span class="icon s-8 icon-view-list"></span>
+Liste des membres</h3></div>
+<!-- / HEADER -->
+
+<!-- CONTENT -->
+<div class="page-content row p-6 container">
+
+  <div class="col-12">
+
+      <div class="example">
+          <div class="description">
+              <div class="description-text">
+                  <h3>Liste des membres</h3>
+              </div>
+          </div>
+          <div class="source-preview-wrapper"><div class="preview">
+            <div class="preview-elements">
+            <div class="preview-tables">
+          <table id="sample-data-table" class="table">
+              <thead>
+                  <tr>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Nom complet</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Email</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Téléphone</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">CIN</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Date d'adhésion</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Numéro de vote</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Rôle</span>
+                        </div>
+                    </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Opération</span>
+                          </div>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let adherent of adherentList">
+                      <td>{{adherent.nom_adherent}} &nbsp; {{adherent.prenom_adherent}}</td>
+                      <td>{{adherent.email}}</td>
+                      <td>{{adherent.telephone}}</td>
+                      <td>{{adherent.cin}}</td>
+                      <td>{{adherent.dateAdhesion}}</td>
+                      <td>{{adherent.numeroVote}}</td>
+                      <td>{{adherent.role}}</td>
+                      <td><a (click)="updateAdherent(adherent)"><span class="icon icon-update"></span></a>&nbsp;&nbsp;
+                          <a (click)="detailsAdherent(adherent)"> <span class="icon icon-account-card-details"></span></a>&nbsp;&nbsp;
+                          <button data-toggle="modal" data-target="#modalId" data-keyboard="true" (click)="sendAdherent(adherent)"><span class="icon icon-delete"></span></button>
+                        </td>
+                  </tr>
+              </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              <div class="modal fade" id="modalId" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Suppression d'un membre</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>voulez-vous vraiment supprimer ce membre ?.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+                            <button type="button" class="btn btn-primary" (click)="deleteAdherent()">Confirmer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+

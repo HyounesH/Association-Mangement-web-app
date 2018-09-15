@@ -1,0 +1,195 @@
+
+    <div class="content-wrapper">
+        <div class="content">
+            <div id="project-dashboard" class="page-layout simple tabbed">
+
+    <div class="page-content-wrapper">
+
+        <!-- HEADER -->
+        <div class="page-header bg-secondary text-auto  p-6">
+
+                <div>
+                    <h3 class="doc-title">Bienvenue {{activeUsername}},</h3>
+                </div>
+        </div>
+
+
+        <!-- CONTENT -->
+        <div class="page-content">
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link btn active" id="home-tab" data-toggle="tab" href="#home-tab-pane" role="tab"
+                       aria-controls="home-tab-pane" aria-expanded="true">Acceuil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link btn" id="budget-summary-tab" data-toggle="tab" href="#budget-summary-tab-pane"
+                       role="tab" aria-controls="budget-summary-tab-pane">Budget Summary</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link btn" id="team-members-tab" data-toggle="tab" href="#team-members-tab-pane"
+                       role="tab" aria-controls="team-members-tab-pane">Team Members</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab">
+
+    <!-- WIDGET GROUP -->
+    <div class="widget-group row">
+
+        <!-- WIDGET 1 -->
+        <div class="col-12 col-sm-6 col-xl-3 p-3">
+
+            <div class="widget widget1 card">
+
+                <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+
+                    <div class="col">
+
+                        <select class="h6 custom-select">
+                            <option selected="" value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                            <option value="tomorrow">Tomorrow</option>
+                        </select>
+
+                    </div>
+
+                    <button type="button" class="btn btn-icon">
+                        <i class="icon icon-dots-vertical"></i>
+                    </button>
+
+                </div>
+
+                <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+
+                    <div class="title text-secondary">25</div>
+
+                    <div class="sub-title h6 text-muted">DUE TASKS</div>
+
+                </div>
+
+                <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+
+                    <span class="text-muted">Completed:</span>
+
+                    <span class="ml-2">7</span>
+
+                </div>
+            </div>
+        </div>
+        <!-- / WIDGET 1 -->
+
+        <!-- WIDGET 2 -->
+        <div class="col-12 col-sm-6 col-xl-3 p-3">
+
+            <div class="widget widget2 card">
+
+                <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+
+                    <div class="col">
+                        <span class="h6">Activités</span>
+                    </div>
+
+                    <button type="button" class="btn btn-icon">
+                        <i class="icon icon-dots-vertical"></i>
+                    </button>
+                </div>
+
+                <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+                    <div class="title text-danger">4</div>
+                    <div class="sub-title h6 text-muted">TASKS</div>
+                </div>
+
+                <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+                    <span class="text-muted">Yesterday's:</span>
+                    <span class="ml-2">2</span>
+                </div>
+            </div>
+        </div>
+        <!-- / WIDGET 2 -->
+
+        <!-- WIDGET 3 -->
+        <div class="col-12 col-sm-6 col-xl-3 p-3">
+
+            <div class="widget widget3 card">
+
+                <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+
+                    <div class="col">
+                        <span class="h6">Dons</span>
+                    </div>
+
+                    <button type="button" class="btn btn-icon">
+                        <i class="icon icon-dots-vertical"></i>
+                    </button>
+
+                </div>
+
+                <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+                    <div class="title text-warning">{{nbreDon}}</div>
+                    <div class="sub-title h6 text-muted">DONS</div>
+                </div>
+
+                <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+                    <span class="text-muted">Ce mois:</span>
+                    <span class="ml-2">0</span>
+                </div>
+            </div>
+        </div>
+        <!-- / WIDGET 3 -->
+
+        <!-- WIDGET 4 -->
+        <div class="col-12 col-sm-6 col-xl-3 p-3">
+
+            <div class="widget widget4 card">
+
+                <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+
+                    <div class="col">
+                        <span class="h6">Adhérents</span>
+                    </div>
+
+                    <button type="button" class="btn btn-icon">
+                        <i class="icon icon-dots-vertical"></i>
+                    </button>
+
+                </div>
+
+                <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+                    <div class="title text-info">{{nbreAdherent}}</div>
+                    <div class="sub-title h6 text-muted">ADHERENTS</div>
+                </div>
+
+                <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+                    <span class="text-muted">Nouveaux:</span>
+                    <span class="ml-2">8</span>
+                </div>
+            </div>
+        </div>
+        <!-- / WIDGET 4 -->
+      </div> <!-- fermer le groupe -->
+
+          <!-- ADD content here -->
+
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

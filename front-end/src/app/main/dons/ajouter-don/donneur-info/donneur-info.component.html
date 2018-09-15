@@ -1,0 +1,125 @@
+
+            <div class="content-wrapper">
+              <div class="content">
+                <div class="doc forms-doc page-layout simple full-width">
+                        <!-- HEADER -->
+                <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+                  <span class="icon s-8 icon-account-plus"></span> &nbsp;Enregistrer un Don</h3></div>
+                <!-- / HEADER -->
+                    <div class="page-content row p-6 container">
+
+                        <div class="col-12">
+
+                                        <div class="example">
+
+                                            <div class="description">
+
+                                                <div class="description-text">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item">
+                                                           <a class="nav-link" id="active" (click)="navigateToDonneur()">Donneur</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                           <a class="nav-link">Don</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                            <form method="POST" (submit)="saveDonneur()">
+                                                <div class="form-row" [formGroup]="donnateurForm">
+                                                    <div class="form-group col-md-6">
+                                                        <input type="email" class="form-control" id="inputEmail" name="email" [(ngModel)]="donneur.email"  placeholder="Email" formControlName="email">
+                                                        <label for="inputEmail" class="col-form-label">Email</label>
+                                                        <div class="alert alert-danger" *ngIf="emaile.invalid && (emaile.dirty ||emaile.touched )">
+                                                          <div *ngIf="emaile.hasError('required')">l'email de donnateur est obligatoire </div>
+                                                          <div *ngIf="emaile.hasError('pattern')">email est invalid</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="donnateurForm">
+                                                        <input type="text" class="form-control" id="inputTelephone" name="telephone" [(ngModel)]="donneur.telephone"  placeholder="Telephone" formControlName="telephone">
+                                                        <label for="inputTelephone" class="col-form-label">Téléphone</label>
+                                                        <div class="alert alert-danger" *ngIf="phone.invalid && (phone.dirty ||phone.touched )">
+                                                          <div *ngIf="phone.hasError('required')">Le numéro de telephone de donnateur est obligatoire </div>
+                                                          <div *ngIf="phone.hasError('pattern')">Le numéro de télephone est invalid</div>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <div class="form-group" [formGroup]="donnateurForm">
+                                                  <input type="text" class="form-control" id="inputAdresse" name="adresse" [(ngModel)]="donneur.adresse" placeholder="adresse" formControlName="adresse">
+                                                  <label for="inputAdresse" class="col-form-label">Adresse</label>
+                                                  <div class="alert alert-danger" *ngIf="addresse.invalid && (addresse.dirty ||addresse.touched )">
+                                                    <div *ngIf="addresse.hasError('required')">L'adresse de donnateur est obligatoire </div>
+                                                  </div>
+
+                                              </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="donnateurForm">
+                                                        <input type="text" class="form-control" id="inputVille" name="ville" [(ngModel)]="donneur.ville" placeholder="Ville" formControlName="ville">
+                                                        <label for="inputVille" class="col-form-label">Ville</label>
+                                                        <div class="alert alert-danger" *ngIf="city.invalid && (city.dirty ||city.touched )">
+                                                          <div *ngIf="city.hasError('required')">ce champ est obligatoire </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="donnateurForm">
+                                                        <input type="text" class="form-control" id="inputPays" name="pays" [(ngModel)]="donneur.pays" placeholder="Pays" formControlName="pays">
+                                                        <label for="inputPays" class="col-form-label">Pays</label>
+                                                        <div class="alert alert-danger" *ngIf="country.invalid && (country.dirty ||country.touched )">
+                                                          <div *ngIf="country.hasError('required')">ce champ est obligatoire </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label class="col-form-label" id="type_donneur">Type de donneur</label>
+                                                  <select name="typeDonneur" class="form-control" id="type_donneur" [(ngModel)]="typeDonneur" >
+                                                    <option value="morale">Moral</option>
+                                                    <option value="physiq">Physique</option>
+                                                  </select>
+                                                </div>
+                                                <div class="form-row" *ngIf="typeDonneur==='physiq'">
+                                                  <div class="form-group col-md-4" [formGroup]="donnateurForm">
+                                                    <input type="text" id="PhNom" name="nom" class="form-control" [(ngModel)]="donneur.nom" placeholder="Nom" formControlName="nom"/>
+                                                    <label id="PhNom" class="col-form-label">Nom</label>
+                                                    <div class="alert alert-danger" *ngIf="lname.invalid && (lname.dirty ||lname.touched )">
+                                                      <div *ngIf="lname.hasError('required')">il manque le nom  donnateur  </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group col-md-4" [formGroup]="donnateurForm">
+                                                      <input type="text" id="Phprenom" name="prenom" class="form-control" [(ngModel)]="donneur.prenom" placeholder="Prenom" formControlName="prenom"/>
+                                                      <label id="Phprenom" class="col-form-label">Prénom</label>
+                                                      <div class="alert alert-danger" *ngIf="fname.invalid && (fname.dirty ||fname.touched )">
+                                                        <div *ngIf="fname.hasError('required')">il manque le prénom de donnateur </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4" [formGroup]="donnateurForm">
+                                                        <input type="text" id="Phcin" name="nom" class="form-control" [(ngModel)]="donneur.cin" placeholder="Cin" formControlName="cin"/>
+                                                        <label id="Phcin" class="col-form-label">Cin</label>
+                                                        <div class="alert alert-danger" *ngIf="code.invalid && (code.dirty ||code.touched )">
+                                                          <div *ngIf="code.hasError('required')">Le cin de  donnateur est obligatoire </div>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                                <div class="form-row" *ngIf="typeDonneur==='morale'">
+                                                    <div class="form-group col-md-12" [formGroup]="donnateurForm">
+                                                      <input type="text" id="nom_moralDonateur" name="nom_moral" class="form-control" [(ngModel)]="donneur.nom_moral" placeholder="Nom" formControlName="nom_moral" />
+                                                      <label id="nom_moralDonateur" class="col-form-label">Nom</label>
+                                                      <div class="alert alert-danger" *ngIf="moral_name.invalid && (moral_name.dirty ||moral_name.touched )">
+                                                        <div *ngIf="moral_name.hasError('required')"> ce champ est obligatoire </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                <br>
+                                                <div class="pull-right">
+                                                  <input type="submit" class="btn btn-primary" value="suivant" id="submitBtn" >
+                                                </div>
+                                    </form>
+                </div>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>
+

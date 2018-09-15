@@ -1,0 +1,246 @@
+
+            <div class="content-wrapper">
+              <div class="content">
+                <div class="doc forms-doc page-layout simple full-width">
+                        <!-- HEADER -->
+                <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+                  <span class="icon s-8 icon-coin"></span> &nbsp;Dépenses</h3></div>
+                <!-- / HEADER -->
+                    <div class="page-content row p-6 container">
+                        <div class="col-12">
+                                        <div class="example">
+                                            <div class="description">
+                                                <div class="description-text">
+                                                    <h3>Ajouter une dépense</h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="source-preview-wrapper">
+                                              <div class="preview">
+                                                <div class="preview-elements">
+                                            <form><div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="depenseForm">
+                                                        <input type="text" class="form-control" id="inputMontant" name="montant"  placeholder="Montant dépensé" [(ngModel)]="liquide.montant" formControlName="montant">
+                                                        <label for="inputMontant" class="col-form-label">Montant dépensé</label>
+                                                        <div class="alert alert-danger" *ngIf="depense_montant.invalid && (depense_montant.dirty || depense_montant.touched )">
+                                                          <div *ngIf="depense_montant.hasError('required')">le montant de dépense est obligatoire</div>
+                                                          <div *ngIf="depense_montant.hasError('pattern')">le montant dépensé contient que les chiffres</div>
+                                                        </div>
+                                                      </div>
+
+                                                    <div class="form-group col-md-6" [formGroup]="depenseForm">
+                                                      <input type="date" class="form-control" id="inputDate" name="date_depense" [(ngModel)]="liquide.date_depense" placeholder="Date de dépense" formControlName="date_depense" >
+                                                      <label for="inputDate" class="col-form-label text-center">    Date de dépense</label>
+                                                      <div class="alert alert-danger" *ngIf="depense_date.invalid && (depense_date.dirty || depense_date.touched )">
+                                                        <div *ngIf="depense_date.hasError('required')">la date de dépense est obligatoire</div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="depenseForm">
+                                                     <label for="inputDepense" class="col-form-label" >Type de dépense</label>
+                                                      <select class="form-control" id="inputDepense" name="type_depense" [(ngModel)]="liquide.type_depense" formControlName="type_depense">
+                                                        <option value="Eau">Eau</option>
+                                                        <option value="Electricité">Electricité</option>
+                                                        <option value="Internet">Internet</option>
+                                                        <option value="Réparation">Réparation</option>
+                                                        <option value="Achat">Achat</option>
+                                                        <option value="Autres">Autres</option>
+                                                      </select>
+                                                      <div class="alert alert-danger" *ngIf="depense_type.invalid && (depense_type.dirty || depense_type.touched )">
+                                                        <div *ngIf="depense_type.hasError('required')">le type de dépense est obligatoire</div>
+                                                      </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="pull-right">
+                                                  <button class="btn btn-primary" [disabled]="!depenseForm.valid" (click)="addDepense()">Enregistrer </button>
+                                                </div>
+                                          </form>
+                                          </div>
+
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="page-content row p-6 container">
+      <div class="col-12">
+                      <div class="example">
+                          <div class="description">
+                              <div class="description-text">
+                                  <h3>Liste des dépenses</h3>
+                              </div>
+                          </div>
+
+                          <div class="source-preview-wrapper">
+                            <div class="preview">
+                              <div class="preview-elements">
+                              <div class="preview-tables">
+                                  <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                      <table id="sample-data-table" class="table">
+                                          <thead>
+                                              <tr>
+                                                  <th class="secondary-text">
+                                                      <div class="table-header">
+                                                          <span class="column-title">Date de dépense</span>
+                                                      </div>
+                                                  </th>
+                                                  <th class="secondary-text">
+                                                      <div class="table-header">
+                                                          <span class="column-title">Montant dépensé</span>
+                                                      </div>
+                                                  </th>
+                                                  <th class="secondary-text">
+                                                    <div class="table-header">
+                                                        <span class="column-title">Type de dépense</span>
+                                                    </div>
+                                                </th>
+                                                <th class="secondary-text">
+                                                  <div class="table-header">
+                                                      <span class="column-title">Opération</span>
+                                                  </div>
+                                              </th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr *ngFor="let m of liquides">
+                                                <td>{{m.date_depense}}</td>
+                                                  <td>{{m.montant}}</td>
+                                                  <td>{{m.type_depense}}</td>
+                                                  <td><button data-toggle="modal" data-target="#modalModifier" data-keyboard="true" (click)="getDepense(m)"><span class="icon icon-update"></span></button>&nbsp;&nbsp;
+                                                      <button data-toggle="modal" data-target="#modalSupprimer" data-keyboard="true" (click)="getDepense(m)"><span class="icon icon-delete"></span></button>
+                                                    </td>
+                                              </tr>
+                                          </tbody>
+                                          </table>
+                                          </div>
+                                          </div>
+                                          </div>
+                                          </div>
+
+
+
+                        </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Modal de la supression d'une dépense -->
+<div class="modal fade" id="modalSupprimer" >
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Suppression d'une dépense</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>Voulez-vous vraiment supprimer cette dépense ?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+                  <button type="button" class="btn btn-primary" (click)="deleteDepense()">Confirmer</button>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- Fin du Modal de la supression d'une dépense -->
+
+<!-- Modal de la modification d'une dépense -->
+<div class="modal fade" id="modalModifier" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" >Modification d'une dépense</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+
+                <div class="form-group" [formGroup]="depenseForm">
+                  <label for="date" class="form-control-label">Date de dépense:</label>
+                  <input type="date" class="form-control" id="date" name="date_depense" [(ngModel)]="liquide.date_depense"  placeholder="Date de dépense" formControlName="date_depense"/>
+                  <div class="alert alert-danger" *ngIf="depense_date.invalid && (depense_date.dirty || depense_date.touched )">
+                    <div *ngIf="depense_date.hasError('required')">la date de dépense est obligatoire</div>
+                  </div>
+                </div>
+
+                <div class="form-group" [formGroup]="depenseForm">
+                  <label for="montant" class="form-control-label">Montant dépensé:</label>
+                  <input type="text" class="form-control" id="montant" name="montant" [(ngModel)]="liquide.montant"  placeholder="Montant dépensé" formControlName="montant"/>
+                  <div class="alert alert-danger" *ngIf="depense_montant.invalid && (depense_montant.dirty || depense_montant.touched )">
+                    <div *ngIf="depense_montant.hasError('required')">le montant de dépense est obligatoire</div>
+                    <div *ngIf="depense_montant.hasError('pattern')">le montant dépensé contient que les chiffres</div>
+                  </div>
+                </div>
+                <div class="form-group" [formGroup]="depenseForm">
+                  <label for="TypeDepense" class="form-control-label">Type de dépense:</label>
+                       <select class="form-control" id="TypeDepense" name="type_depense" [(ngModel)]="liquide.type_depense" formControlName="type_depense" >
+                         <option value="Eau">Eau</option>
+                         <option value="Electricité">Electricité</option>
+                         <option value="Internet">Internet</option>
+                         <option value="Réparation">Réparation</option>
+                         <option value="Achat">Achat</option>
+                         <option value="Autres">Autres</option>
+                       </select>
+                       <div class="alert alert-danger" *ngIf="depense_type.invalid && (depense_type.dirty || depense_type.touched )">
+                        <div *ngIf="depense_type.hasError('required')">le type de dépense est obligatoire</div>
+                      </div>
+              </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModalModif>Fermer</button>
+              <button type="button" class="btn btn-primary" [disabled]="!depenseForm.valid" (click)="updateDepense()">Modifier</button>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Fin du Modal de la modification d'une dépense -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div></div>
+
+

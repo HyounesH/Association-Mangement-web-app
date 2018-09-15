@@ -1,0 +1,20 @@
+#active{
+  background-color:dodgerblue;
+  color:#ffffff;
+  }
+form .custom-file{
+    margin-top:1.2% !important;
+}
+.menu-add-adherent{
+  -webkit-box-shadow:0 1px 2px rgba(0,0,0,.075);box-shadow:0 1px 2px rgba(0,0,0,.075);
+  box-shadow: 0 1px 2px rgba(0,0,0,.075);box-shadow:0 1px 2px rgba(0,0,0,.075);
+  background-color: white !important;
+}
+.btn-primary:hover{
+background-color: #2196F3;
+}
+div .alert-danger{
+font-size: 15px !important;
+margin-top: 3px;
+padding: 6px !important;
+}

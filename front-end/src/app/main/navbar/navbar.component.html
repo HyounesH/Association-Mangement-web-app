@@ -1,0 +1,149 @@
+<!-- Debut Aside -->
+   <div class="aside-content-wrapper">
+
+      <div class="aside-content bg-primary-500 text-auto">
+
+        <div class="aside-toolbar">
+
+          <div class="logo">
+            <span class="logo-icon">{{assocLogo}}</span>
+            <span class="logo-text">{{assocName}}</span>
+          </div>
+
+          <button id="toggle-fold-aside-button" type="button" class="btn btn-icon d-none d-lg-block" data-fuse-aside-toggle-fold>
+            <i class="icon icon-backburger"></i>
+          </button>
+
+        </div>
+
+        <ul class="nav flex-column custom-scrollbar" id="sidenav" data-children=".nav-item" >
+          <li class="subheader">
+            <span>APPS</span>
+          </li>
+          <li class="nav-item" *ngIf="activeRole==='president'">
+              <a class="nav-link ripple " (click)="naviagateToDashboard()">
+                <i class="icon s-4 icon-tile-four"></i>
+                <span>Tableau de bord</span>
+              </a>
+            </li>
+            <li class="nav-item" role="tab" id="heading-dashboards" *ngIf="activeRole==='president'">
+
+              <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-membres" href="#" aria-expanded="false"
+                aria-controls="collapse-dashboards">
+                <i class="icon icon-people"></i>
+                <span>Membre</span>
+              </a>
+
+              <ul id="collapse-membres" class="collapse" role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+
+                <li class="nav-item">
+                  <a class="nav-link ripple "(click)="listMembre()">
+                    <i class="icon s-5 icon-format-list-numbers"></i>
+                    <span>Lister des membres</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link ripple " (click)="addMembre()">
+                    <i class="icon s-5 icon-plus-circle-outline" ></i><span>Ajouter un membre</span>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item" *ngIf="activeRole==='president'">
+              <a class="nav-link ripple " (click)="naviagateToDonnateur()">
+                <i class="icon s-4 icon-account-outline"></i>
+                <span>Donnateur</span>
+              </a>
+            </li>
+            <li class="nav-item" role="tab" id="heading-dashboards" *ngIf="activeRole==='president'">
+
+              <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-rapport" href="#" aria-expanded="false"
+                aria-controls="collapse-dashboards">
+                <i class="icon icon-library-books"></i>
+                <span>Rapport</span>
+              </a>
+
+              <ul id="collapse-rapport" class="collapse" role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+
+                <li class="nav-item">
+                  <a class="nav-link ripple " (click)="entrees()">
+                    <i class="icon s-5  icon-arrow-right-thick"></i><span>Entrées</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link ripple " (click)="sorties()" >
+                    <i class="icon s-5  icon-arrow-left-thick" ></i><span>Sorties</span>
+                  </a>
+                </li>
+                </ul>
+                </li>
+          <li class="nav-item" role="tab" id="heading-dashboards" *ngIf="activeRole==='secretaire'">
+
+                        <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-adherent" href="#" aria-expanded="false"
+                          aria-controls="collapse-dashboards">
+                          <i class="icon icon-people"></i>
+                          <span>Adhérents</span>
+                        </a>
+
+                        <ul id="collapse-adherent" class="collapse" role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+
+                          <li class="nav-item">
+                            <a class="nav-link ripple " href="#" routerLink="adherent/list">
+                              <i class="icon s-5 icon-format-list-numbers"></i>
+                              <span>Lister les adhérents</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link ripple " href="#" routerLink="adherent/add">
+                              <i class="icon s-5 icon-plus-circle-outline" ></i><span>Ajouter un adhérent</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </li>
+          <li class="nav-item" role="tab" id="heading-dashboards" *ngIf="activeRole==='secretaire'">
+
+            <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-dons" href="#" aria-expanded="false"
+              aria-controls="collapse-dashboards">
+              <i class="icon icon-gift"></i>
+              <span>Dons</span>
+            </a>
+
+            <ul id="collapse-dons" class="collapse" role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+
+              <li class="nav-item">
+                <a class="nav-link ripple " (click)="listDons()">
+                  <i class="icon s-5 icon-format-list-numbers"></i><span>Lister les dons</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link ripple " (click)="ajouterDon()" >
+                  <i class="icon s-5 icon-plus-circle-outline" ></i><span>Ajouter un don</span>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item" *ngIf="activeRole==='secretaire'">
+            <a class="nav-link ripple " (click)="depenses()">
+              <i class="icon icon-coin"></i>
+              <span>Dépenses</span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="activeRole==='secretaire'">
+            <a class="nav-link ripple " routerLink="parametrage">
+              <i class="icon icon-settings"></i>
+              <span>Paramétrage</span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  <!-- End Aside  -->

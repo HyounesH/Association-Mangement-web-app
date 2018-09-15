@@ -1,0 +1,27 @@
+.description{
+    display:flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    color:white;
+    background: black;
+}
+form .description{
+    width: 120% !important;
+    margin-left:-5% !important;
+}
+.description .description-text h5{
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0;
+
+}
+form .description .description-text{
+    margin-left: 2.5% !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+form .custom-file{
+    margin-top:1.2% !important;
+}

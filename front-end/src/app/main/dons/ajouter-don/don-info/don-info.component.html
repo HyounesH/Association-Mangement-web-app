@@ -1,0 +1,147 @@
+
+            <div class="content-wrapper">
+                <div class="content">
+                  <div class="doc forms-doc page-layout simple full-width">
+                          <!-- HEADER -->
+                  <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+                    <span class="icon s-8 icon-account-plus"></span> &nbsp;Enregistrer un Don</h3></div>
+                  <!-- / HEADER -->
+                      <div class="page-content row p-6 container">
+
+                          <div class="col-12">
+
+                                          <div class="example">
+
+                                              <div class="description">
+
+                                                  <div class="description-text">
+                                                      <ul class="nav nav-tabs">
+                                                          <li class="nav-item">
+                                                             <a class="nav-link" (click)="navigateToDonneur()" >Donnateur</a>
+                                                          </li>
+                                                          <li class="nav-item" id="active">
+                                                             <a class="nav-link" href="?">Don</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+
+                                              <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                              <form method="POST"(submit)="addDon()" >
+                                                  <div class="form-group" [formGroup]="donForm">
+                                                    <input type="text" class="form-control" id="inputDesc" name="description_don" [(ngModel)]="don.description_don" placeholder="Descritption de don" formControlName="description_don">
+                                                    <label for="inputDesc" class="col-form-label">Description de don</label>
+                                                    <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty ||description.touched )">
+                                                      <div *ngIf="description.hasError('required')">ce champ est obligatoire </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" [formGroup]="donForm">
+                                                  <input type="date" class="form-control text-center" id="date_don_id" name="date_don" [(ngModel)]="don.date_don" placeholder="Date de don" formControlName="date_don" >
+                                                  <label class="col-form-label" for="date_don_id">Date de don</label>
+                                                  <div class="alert alert-danger" *ngIf="donDate.invalid && (donDate.dirty ||donDate.touched )">
+                                                    <div *ngIf="donDate.hasError('required')">la date de don est obligatoire </div>
+                                                  </div>
+                                                </div>
+                                                  <div class="form-group">
+                                                    <label class="col-form-label" id="type_don">Type de don</label>
+                                                    <select name="typeDon" class="form-control" [(ngModel)]="typeDon" id="type_don">
+                                                      <option value="arg">Argent</option>
+                                                      <option value="matr">Matériel</option>
+                                                    </select>
+                                                  </div>
+                                                  <div class="form-group" *ngIf="typeDon==='arg'" [formGroup]="donForm">
+                                                   <input type="text" id="montant" class="form-control" name="montant" [(ngModel)]="don.montant" placeholder="Montant" formControlName="montant"/>
+                                                   <label id="montant" for="montant" class="col-form-label">Montant</label>
+                                                   <div class="alert alert-danger" *ngIf="donMontant.invalid && (donMontant.dirty ||donMontant.touched )">
+                                                    <div *ngIf="donMontant.hasError('required')">le montant  est obligatoire </div>
+                                                    <div *ngIf="donMontant.hasError('pattern')">Le montant ne contient que des chiffres</div>
+                                                  </div>
+                                                  </div>
+
+                                                  <div class="form-group" *ngIf="typeDon==='arg'">
+                                                      <label class="col-form-label" id="type_paiment">Type de paiment</label>
+                                                      <select name="typePaiment" class="form-control" [(ngModel)]="typePaiment" id="type_paiment">
+                                                        <option value="espc">Espèce</option>
+                                                        <option value="cheq">Chèque</option>
+                                                        <option value="vers">Versement</option>
+                                                      </select>
+                                                  </div>
+                                                  <div *ngIf="typePaiment==='cheq' && typeDon==='arg'">
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6" [formGroup]="donForm">
+                                                        <input type="text" class="form-control" id="Inputnum_compte_banque" name="num_compte_banque" [(ngModel)]="don.num_compte_banque" placeholder="Numéro de compte bancaire" formControlName="num_compte_banque" />
+                                                        <label class="col-form-label" for="Inputnum_compte_banque" id="Inputnum_compte_banque">Numéro de compte bancaire</label>
+                                                        <div class="alert alert-danger" *ngIf="compteNumberBanc.invalid && (compteNumberBanc.dirty ||compteNumberBanc.touched )">
+                                                          <div *ngIf="compteNumberBanc.hasError('required')">ce champ est obligatoire </div>
+                                                          <div *ngIf="compteNumberBanc.hasError('pattern')">Le numéro de compte bancaire ne contient que des chiffres</div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group col-md-6" [formGroup]="donForm">
+                                                        <input type="text" class="form-control" id="InputNom_banque" name="nom_banque" [(ngModel)]="don.nom_banque" placeholder="Nom de banque" formControlName="nom_banque" />
+                                                        <label id="InputNom_banque" for="InputNom_banque" class="col-form-label">Nom de banque</label>
+                                                        <div class="alert alert-danger" *ngIf="bancName.invalid && (bancName.dirty ||bancName.touched )">
+                                                          <div *ngIf="bancName.hasError('required')">le nom de la banque est obligatoire </div>
+                                                          <div *ngIf="bancName.hasError('pattern')">le nom de la banque ne contient que des lettres</div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                        <div class="form-group" [formGroup]="donForm">
+                                                            <input type="date" class="form-control" id="Inputdate_cheque" name="date_cheque" [(ngModel)]="don.date_cheque" placeholder="Date de cheque" formControlName="date_cheque" />
+                                                            <label class="col-form-label text-center" for="Inputdate_cheque" id="Inputdate_cheque">Date de chèque</label>
+                                                            <div class="alert alert-danger" *ngIf="chequeDate.invalid && (chequeDate.dirty ||chequeDate.touched )">
+                                                              <div *ngIf="chequeDate.hasError('required')">ce champ est obligatoire </div>
+                                                            </div>
+                                                          </div>
+                                                  </div>
+                                                  <div *ngIf="typePaiment==='vers' && typeDon==='arg'">
+                                                     <div class="form-group" [formGroup]="donForm">
+                                                        <input type="text" id="InputNum_compte_banque" class="form-control" name="num_compte_banque" [(ngModel)]="don.num_compte_banque" placeholder="Numéro de compte bancaire" formControlName="num_compte_banque" />
+                                                        <label class="col-form-label" id="InputNum_compte_banque" for="InputNum_compte_banque">Numéro de compte bancaire</label>
+                                                        <div class="alert alert-danger" *ngIf="compteNumberBanc.invalid && (compteNumberBanc.dirty ||compteNumberBanc.touched )">
+                                                          <div *ngIf="compteNumberBanc.hasError('required')">ce champ est obligatoire </div>
+                                                          <div *ngIf="compteNumberBanc.hasError('pattern')">le numéro de compte bancaire ne contient que des chiffres</div>
+                                                        </div>
+                                                     </div>
+                                                  </div>
+                                                  <div *ngIf="typeDon==='matr'">
+                                                        <div class="form-group" >
+                                                          <input type="date"id="date_sortie" class="form-control" name="dateSortie" [(ngModel)]="don.dateSortie" placeholder="Date de sortie" />
+                                                          <label id="date_sortie" for="date_sortie" class="col-form-label text-center">Date de sortie</label>
+                                                        </div>
+                                                      <div class="form-row">
+                                                        <div class="form-group col-md-6" [formGroup]="donForm">
+                                                         <input type="text" class="form-control" name="etat" id="etatInput" [(ngModel)]="don.etat" placeholder="Etat matériel" formControlName="etat" />
+                                                         <label id="etatInput" class="col-form-label">Etat du matériel</label>
+                                                         <div class="alert alert-danger" *ngIf="state.invalid && (state.dirty ||state.touched )">
+                                                          <div *ngIf="state.hasError('required')">ce champ est obligatoire </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                          <input type="text" id="lieuSortieInput" name="lieuSortie" class="form-control" [(ngModel)]="don.lieuSortie" placeholder="Lieu de sortie" />
+                                                          <label id="lieuSortieInput"  class="col-form-label">Lieu de sortie</label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <div class="form-check remember-me mb-3">
+                                                          <label class="form-check-label">
+                                                              <input type="checkbox" class="form-check-input" name="suivi" [(ngModel)]="don.suivi" data-toggle="toggle" />
+                                                              <span class="checkbox-icon"></span>
+                                                              <span class="form-check-description">Suivi votre matériel</span>
+                                                          </label>
+                                                      </div>
+                                                      </div>
+                                                  </div>
+                                                  <br>
+                                                  <div class="pull-right">
+                                                    <input type="submit" class="btn btn-primary" value="Enregistrer"/>
+                                                  </div>
+                                      </form>
+                  </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div></div>
+

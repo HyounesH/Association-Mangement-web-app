@@ -1,0 +1,83 @@
+
+            <div class="content-wrapper">
+              <div class="content">
+                <div class="doc forms-doc page-layout simple full-width">
+                        <!-- HEADER -->
+                <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+                  <span class="icon s-8 icon-account-plus"></span> &nbsp;Enregistrer un Adhérent</h3></div>
+                <!-- / HEADER -->
+                    <div class="page-content row p-6 container">
+
+                        <div class="col-12">
+
+                                        <div class="example">
+
+                                            <div class="description">
+
+                                                <div class="description-text">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item">
+                                                           <a class="nav-link"  (click)="infoStandard()">Information standard</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                           <a class="nav-link" id="active" (click)="infoAdresses()">Adresses</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                            <form>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adresseForm">
+                                                        <input type="text" class="form-control" id="inputNom" name="quartier" [(ngModel)]="adresses.quartier"  placeholder="Quarier" formControlName="quartier">
+                                                        <label for="inputNom" class="col-form-label">Quartier</label>
+                                                        <div class="alert alert-danger" *ngIf="street.invalid && (street.dirty ||street.touched )">
+                                                            <div *ngIf="street.hasError('required')">le champ quartier est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adresseForm">
+                                                        <input type="text" class="form-control" id="inputPrenom" name="ville" [(ngModel)]="adresses.ville"  placeholder="Ville" formControlName="ville">
+                                                        <label for="inputPrenom" class="col-form-label">Ville</label>
+                                                        <!--<label for="inputbrVote" class="col-form-label">Ville</label>
+                                                      <select id="inputbrVote" class="form-control" name="ville" [(ngModel)]="adresses.ville" formControlName="ville">
+                                                          <option *ngFor="let c of countries"
+                                                          [value]="c.name"
+                                                          >{{c.name}}</option>
+                                                      </select>-->
+                                                        <div class="alert alert-danger" *ngIf="city.invalid && (city.dirty ||city.touched )">
+                                                            <div *ngIf="city.hasError('required')">le champ ville est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adresseForm">
+                                                        <input type="email" class="form-control" id="inputEmail4" name="codePostal" [(ngModel)]="adresses.codePostal" placeholder="Code Postal" formControlName="codePostal">
+                                                        <label for="inputEmail4" class="col-form-label">Code postal</label>
+                                                        <div class="alert alert-danger" *ngIf="postalCode.invalid && (postalCode.dirty ||postalCode.touched )">
+                                                            <div *ngIf="postalCode.hasError('required')">le champ  code postale est obligatoire</div>
+                                                            <div *ngIf="postalCode.hasError('pattern')">Le champ code postale ne contient que des chiffres</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adresseForm">
+                                                        <input type="text" class="form-control" id="inputPassword4" name="complAdresse" [(ngModel)]="adresses.complAdresse" placeholder="Adresse complimentaire" formControlName="complAdresse">
+                                                        <label for="inputPassword4" class="col-form-label">Adresse complémentaire</label>
+                                                        <div class="alert alert-danger" *ngIf="extraAdresse.invalid && (extraAdresse.dirty ||extraAdresse.touched )">
+                                                            <div *ngIf="extraAdresse.hasError('required')">le champ d'adresse complementaire est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="pull-right">
+                                                  <button class="btn btn-primary" (click)="addAdherent()" [disabled]="!adresseForm.valid">Enregistrer </button>
+                                                </div>
+                                    </form>
+                </div>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>

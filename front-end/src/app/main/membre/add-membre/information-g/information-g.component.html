@@ -1,0 +1,194 @@
+
+            <div class="content-wrapper">
+              <div class="content">
+                <div class="doc forms-doc page-layout simple full-width">
+                        <!-- HEADER -->
+                <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+                  <span class="icon s-8 icon-account-plus"></span> &nbsp;Enregistrer un membre</h3></div>
+                <!-- / HEADER -->
+                    <div class="page-content row p-6 container">
+
+                        <div class="col-12">
+
+                                        <div class="example">
+
+                                            <div class="description">
+
+                                                <div class="description-text">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item">
+                                                           <a class="nav-link" id="active">Information standard</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                           <a class="nav-link"(click)="saveAdherent()" [hidden]="hidden">Adresses</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                            <form>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="text" class="form-control" id="inputNom" name="nom_adherent"  placeholder="Nom" [(ngModel)]="adherent.nom_adherent" formControlName="nom_adherent" >
+                                                        <label for="inputNom" class="col-form-label">Nom</label>
+                                                        <div class="alert alert-danger" *ngIf="nom.invalid && (nom.dirty || nom.touched )">
+                                                            <div *ngIf="nom.hasError('required')">le nom de membre est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="text" class="form-control" id="inputPrenom" name="prenom_adherent" [(ngModel)]="adherent.prenom_adherent" placeholder="prénom" formControlName="prenom_adherent">
+                                                        <label for="inputPrenom" class="col-form-label">Prénom</label>
+                                                        <div class="alert alert-danger" *ngIf="prenom.invalid && (prenom.dirty || prenom.touched )">
+                                                            <div *ngIf="prenom.hasError('required')">le nom de membre est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="email" class="form-control" id="inputEmail4" name="email" [(ngModel)]="adherent.email"  placeholder="Email" formControlName="email">
+                                                        <label for="inputEmail" class="col-form-label">Email</label>
+                                                        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched )">
+                                                            <div *ngIf="email.hasError('required')">l'email de membre est obligatoire</div>
+                                                            <div *ngIf="email.hasError('pattern')">le format de l'email est invalid</div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="password" class="form-control" id="inputPassword4" name="motPass" [(ngModel)]="adherent.motPasse" placeholder="mot de pass" formControlName="motPasse">
+                                                        <label for="inputPassword" class="col-form-label">Mot de passe</label>
+                                                        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty ||password.touched )">
+                                                            <div *ngIf="password.hasError('required')">le mot de passe de membre est obligatoire</div>
+                                                            <div *ngIf="password.hasError('minlength')">la longueur de mot de passe doit dépasser 6 caractéres</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="text" class="form-control" id="inputCIN"  name="cin" [(ngModel)]="adherent.cin" placeholder="CIN" formControlName="cin">
+                                                        <label for="inputCIN" class="col-form-label">CIN</label>
+                                                        <div class="alert alert-danger" *ngIf="cin.invalid && (cin.dirty ||cin.touched )">
+                                                            <div *ngIf="cin.hasError('required')">le cin de membre est obligatoire</div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="text" class="form-control" id="inputLieuNaissance" name="lieuDeNaissance" [(ngModel)]="adherent.lieuDeNaissance" placeholder="Lieu de naissance" formControlName="lieuDeNaissance">
+                                                        <label for="inputLieuNaissance" class="col-form-label">Lieu de naissance</label>
+                                                        <div class="alert alert-danger" *ngIf="lieuNaissance.invalid && (lieuNaissance.dirty ||lieuNaissance.touched )">
+                                                            <div *ngIf="lieuNaissance.hasError('required')">ce champ est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="text" class="form-control" id="inputPhone" name="telephone" [(ngModel)]="adherent.telephone" placeholder="Numéro de télephone" formControlName="telephone">
+                                                        <label for="inputPhone" class="col-form-label">Numéro de téléphone</label>
+                                                        <div class="alert alert-danger" *ngIf="phone.invalid && (phone.dirty ||phone.touched )">
+                                                            <div *ngIf="phone.hasError('required')">le télephone de membre est obligatoire</div>
+                                                            <div *ngIf="phone.hasError('pattern')">le numéro de télephone est invalide</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" [formGroup]="adherentForm">
+                                                        <input type="date" class="form-control" id="inputDateNaissance" name="dateDeNaissance" [(ngModel)]="adherent.dateDeNaissance" placeholder="Date de naissance" formControlName="dateDeNaissance">
+                                                        <label for="inputDateNaissance" class="col-form-label text-center"> Date de naissance</label>
+                                                        <div class="alert alert-danger" *ngIf="birthday.invalid && (birthday.dirty ||birthday.touched )">
+                                                            <div *ngIf="birthday.hasError('required')">la date de naissance de membre est obligatoire</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <label class="custom-file col-md-8">
+                                                        <input type="file" id="file2" name="photo" [(ngModel)]="adherent.photo" class="custom-file-input" (change)="onFileSelected($event)">
+                                                        <span class="custom-file-control"></span>
+                                                    </label>
+                                                  <div class="form-group col-md-4" [formGroup]="adherentForm">
+                                                      <input type="text" class="form-control" id="inputNumeroVote" name="numeroVote" [(ngModel)]="adherent.numeroVote" placeholder="Numéro de vote" formControlName="numeroVote">
+                                                      <label for="inputNumeroVote" class="col-form-label">&nbsp;Numéro de vote</label>
+                                                      <div class="alert alert-danger" *ngIf="voteNumber.invalid && (voteNumber.dirty ||voteNumber.touched )">
+                                                          <div *ngIf="voteNumber.hasError('required')">le numéro de bureau de vote est obligatoire</div>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputbrVote" class="col-form-label">Type de membre</label>
+                                                    <select id="inputbrVote" class="form-control" name="role" [(ngModel)]="adherent.role">
+                                                        <option value="secretaire">Secretaire</option>
+                                                        <option value="trésorier">Trésorier</option>
+                                                        <option value="vice-président">Vice-président</option>
+                                                        <option value="secrétaire-general">secrétaire generale</option>
+                                                        <option value="responsable-archive">Responsable d'archive </option>
+                                                    </select>
+                                                    <div class="alert alert-danger" *ngIf="role.invalid && (role.dirty ||role.touched )">
+                                                      <div *ngIf="role.hasError('required')">ce champ est obligatoire</div>
+                                                  </div>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="inputbrVote" class="col-form-label">Bureau de vote</label>
+                                                  <select id="inputbrVote" class="form-control" name="bureauVote_id" [(ngModel)]="bureauVote_id">
+                                                      <option *ngFor="let bv of listBv"
+                                                      [value]="bv.bureauVote_id"
+                                                      >{{bv.nom_bureauVote}}</option>
+                                                  </select>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="inputService" class="col-form-label">Service</label>
+                                                <select id="inputServie" class="form-control" name="service_id" [(ngModel)]="service_id">
+                                                  <option *ngFor="let serv of _listServices"
+                                                  [value]="serv.id_service"
+                                                  >{{serv.nom}}</option>
+                                                </select>
+                                              </div>
+                                              <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                  <label for="inputProfession" class="col-form-label">Profession</label>
+                                                  <select id="inputProfession" class="form-control" name="profession_id" [(ngModel)]="profession_id">
+                                                    <option *ngFor="let profession of listProfession"
+                                                    [value]="profession.profession_id"
+                                                    >{{profession.prefession_nom}}</option>
+                                                  </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label for="inputCommunaute" class="col-form-label">Communauté</label>
+                                                  <select id="inputCommunaute" class="form-control" name="communaute_id" [(ngModel)]="communaute_id">
+                                                    <option *ngFor="let communaute of listCommunaute"
+                                                    [value]="communaute.communaute_id"
+                                                    >{{communaute.nom_communaute}}</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+                                                <div class="form-group">
+                                                  <label class="col-form-label">Sexe</label>
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio"  name="inlineRadioOptions" id="inlineRadio1"
+                                                               [(ngModel)]="adherent.sexe" value="homme"/>
+                                                        <span class="radio-icon"></span>
+                                                        <span class="form-check-description">Homme</span>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                                               [(ngModel)]="adherent.sexe"  value="femme"/>
+                                                        <span class="radio-icon"></span>
+                                                        <span class="form-check-description">Femme</span>
+                                                    </label>
+                                                </div>
+                                                </div>
+                                                <br>
+                                                <div class="pull-right">
+                                                  <button class="badge badge-primary" (click)="saveAdherent()">
+                                                    <span class="icon s-10 icon-arrow-right-thick"></span>
+                                                  </button>
+                                                </div>
+                                    </form>
+                </div>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>

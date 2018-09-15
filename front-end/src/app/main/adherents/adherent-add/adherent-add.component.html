@@ -1,0 +1,183 @@
+<div class="content-wrapper">
+  <div class="content">
+    <div class="doc forms-doc page-layout simple full-width">
+            <!-- HEADER -->
+    <div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+      <span class="icon s-8 icon-account-plus"></span> &nbsp;Ajouter un Adhérent</h3></div>
+    <!-- / HEADER -->
+        <div class="page-content row p-6 container">
+            <div class="col-12">
+
+                            <div class="example">
+
+                                <div class="description">
+
+                                    <div class="description-text">
+                                        <h5>Information standard</h5>
+                                    </div>
+                                </div>
+
+                                <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+                                <form (ngSubmit)="AddAdherent()" >
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputNom" name="nom_adherent"  placeholder="Nom" [(ngModel)]="adherent.nom_adherent">
+                                            <label for="inputNom" class="col-form-label">Nom</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputPrenom" name="prenom_adherent" [(ngModel)]="adherent.prenom_adherent" placeholder="prénom">
+                                            <label for="inputPrenom" class="col-form-label">Prénom</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="email" class="form-control" id="inputEmail4" name="email" [(ngModel)]="adherent.email"  placeholder="Email">
+                                            <label for="inputEmail" class="col-form-label">Email</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="password" class="form-control" id="inputPassword4" name="motPass" [(ngModel)]="adherent.motPasse" placeholder="mot de pass">
+                                            <label for="inputPassword" class="col-form-label">Mot de passe</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputCIN"  name="cin" [(ngModel)]="adherent.cin" placeholder="CIN">
+                                            <label for="inputCIN" class="col-form-label">CIN</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputLieuNaissance" name="lieuDeNaissance" [(ngModel)]="adherent.lieuDeNaissance" placeholder="Lieu de naissance">
+                                            <label for="inputLieuNaissance" class="col-form-label">Lieu de naissance</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputPhone" name="telephone" [(ngModel)]="adherent.telephone" placeholder="Numéro de télephone">
+                                            <label for="inputPhone" class="col-form-label">Numéro de téléphone</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="date" class="form-control" id="inputDateNaissance" name="dateDeNaissance" [(ngModel)]="adherent.dateDeNaissance" placeholder="Date de naissance">
+                                            <label for="inputDateNaissance" class="col-form-label text-center">    Date de naissance</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main ">
+                                        <label for="inputAddress" class="col-form-label">Adresse</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="inputAddress2"
+                                               placeholder="Apartment, studio, or floor">
+                                        <label for="inputAddress2" class="col-form-label">Adresse 2</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="custom-file col-md-8">
+                                            <input type="file" id="file2" name="photo" [(ngModel)]="adherent.photo" class="custom-file-input">
+                                            <span class="custom-file-control"></span>
+                                        </label>
+                                      <div class="form-group col-md-4">
+                                          <input type="text" class="form-control" id="inputNumeroVote" name="numeroVote" [(ngModel)]="adherent.numeroVote" placeholder="Numéro de vote">
+                                          <label for="inputNumeroVote" class="col-form-label">&nbsp;Numéro de vote</label>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputService" class="col-form-label">Service</label>
+                                        <select id="inputServie" class="form-control">
+                                           <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <br/>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio"  name="inlineRadioOptions" id="inlineRadio1"
+                                                   [(ngModel)]="adherent.sexe" value="homme"/>
+                                            <span class="radio-icon"></span>
+                                            <span class="form-check-description">Homme</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                                   [(ngModel)]="adherent.sexe"  value="femme"/>
+                                            <span class="radio-icon"></span>
+                                            <span class="form-check-description">Femme</span>
+                                        </label>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <div class="description">
+                                        <div class="description-text">
+                                        <h5>Bureau de vote</h5>
+                                      </div>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                            <input type="text" class="form-control" id="inputBureauVote" [(ngModel)]="adherent.bureauVote.nom_bureauVote" placeholder="Bureau de vote">
+                                            <label for="inputBureauVote" class="col-form-label">Bureau de vote</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputPhoneVote" [(ngModel)]="adherent.bureauVote.telephones[0].telephone" placeholder="Télephone">
+                                            <label for="inputPhoneVote" class="col-form-label">Téléphone</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="inputPhone2" [(ngModel)]="adherent.bureauVote.telephones[1].telephone" placeholder="Télephone 2">
+                                            <label for="inputPhone2" class="col-form-label">Téléphone 2</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="inputAdresseB"[(ngModel)]="adherent.bureauVote.adresse" placeholder="Adresse de bureau">
+                                        <label for="inputAdresseB" class="col-form-label">Adresse de bureau</label>
+                                    </div>
+
+                                    <br/>
+                                    <div class="description">
+                                        <div class="description-text">
+                                        <h5>Profession de l'adhérent</h5>
+                                      </div>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="inputProfessin" class="col-form-label">Profession</label>
+                                        <select id="inputProfession" class="form-control" [(ngModel)]="adherent.profession.prefession_nom">
+                                          <option value="professeur">Professeur</option>
+                                          <option value="directeur">Directeur</option>
+                                          <option value="etudiant">Etudiant(e)</option>
+                                          <option value="docteur">Docteur</option>
+                                          <option value="autre">Autre</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="inputProfessionNote" [(ngModel)]="adherent.profession.profession_note" placeholder="Description de profession">
+                                        <label for="inputProfessionNote" class="col-form-label">Description de profession</label>
+                                    </div>
+                                    <br/>
+                                    <div class="description">
+                                        <div class="description-text">
+                                        <h5>Type d'adhérent</h5>
+                                      </div>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="inputTypeAdherent" class="col-form-label">Type Adhérent</label>
+                                        <select id="inputTypeAdherent" class="form-control">
+                                          <option value="AS">Adhérent simple</option>
+                                          <option value="MB">Membre bureau</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="inputTypeAdherentNote" placeholder="Description de profession">
+                                        <label for="inputTypeAdherentNote" class="col-form-label">Description de type</label>
+                                    </div>
+                                   <br/>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <button type="reset" class="btn btn-danger">Vider</button>
+                                </form>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

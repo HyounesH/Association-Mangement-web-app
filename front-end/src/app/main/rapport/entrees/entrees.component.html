@@ -1,0 +1,244 @@
+<div class="content-wrapper">
+  <div class="content">
+      <div class="doc data-table-doc page-layout simple full-width">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+<span class="icon s-8 icon-arrow-right-thick"></span>
+Les entrées</h3></div>
+<!-- / HEADER -->
+
+<!-- CONTENT -->
+<div class="page-content row p-6 container">
+
+  <div class="col-12">
+
+      <div class="example">
+          <div class="description">
+              <div class="description-text">
+                  <h3>Matériels Entrants</h3>
+              </div>
+          </div>
+          <div class="source-preview-wrapper"><div class="preview">
+            <div class="preview-elements">
+            <div class="preview-tables">
+          <table id="sample-data-table" class="table">
+              <thead>
+                  <tr>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Date de réception</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Description</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                        <div class="table-header">
+                            <span class="column-title">Donnateur</span>
+                        </div>
+                    </th>
+                    <th class="secondary-text">
+                            <div class="table-header">
+                                <span class="column-title">Opération</span>
+                            </div>
+                        </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let m of listMateriel">
+                    <td>{{m.date_don}}</td>
+                      <td>{{m.description_don}}</td>
+                        <div *ngIf="m.donneur.type_donneur==='physiq'">
+                            <td>{{m.donneur.nom}}&nbsp;{{m.donneur.prenom}}</td>
+                        </div>
+                        <div *ngIf="m.donneur.type_donneur==='morale'">
+                                <td>{{m.donneur.nom_moral}}</td>
+                        </div>
+                        <td>
+                            <button id="details" data-toggle="modal" data-target="#modalId" data-keyboard="true" (click)="details(m.receveur_don.code_employe,m.donneur)"><span class="icon icon-account-card-details"></span></button>
+                          </td>
+                  </tr>
+              </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+              <div class="modal fade" id="modalId" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Détails </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="container-fluid bd-example-row">
+                                    <h6>Donateur </h6>
+                                    <div *ngIf="donateur.type_donneur==='physiq'">
+                                            <div class="row">
+                                                    <div class="col-md-4"><b>CIN : </b> </div>
+                                                    {{donateur.cin}}
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4"><b>Nom Complet : </b></div>
+                                                     {{donateur.nom}}&nbsp;{{donateur.prenom}}
+                                                </div>
+                                        </div>
+                                        <div *ngIf="donateur.type_donneur==='morale'">
+                                                <div class="row">
+                                                    <div class="col-md-4"><b>Nom : </b></div>
+                                                    {{donateur.nom_moral}}
+                                                </div>
+                                            </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Email : </b></div>
+                                            {{donateur.email}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Téléphone : </b></div>
+                                            {{donateur.telephone}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Adresse : </b></div>
+                                            {{donateur.adresse}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Ville : </b></div>
+                                            {{donateur.ville}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Pays : </b></div>
+                                            {{donateur.pays}}
+                                        </div>
+
+                                    <br>
+                                    <h6>Receveur du don </h6>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>CIN : </b> </div>
+                                            {{adherent.cin}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Nom Complet : </b></div>
+                                            {{adherent.nom_adherent}}&nbsp;{{adherent.prenom_adherent}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Email : </b></div>
+                                            {{adherent.email}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Téléphone : </b></div>
+                                            {{adherent.telephone}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Adresse : </b></div>
+
+                                        </div>
+                                         <div class="row">
+                                            <div class="col-md-4"><b>Ville : </b></div>
+                                            {{adherent.adresse.ville}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Pays : </b></div>
+                                            {{adherent.adresse.pays}}
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+              <div class="page-content row p-6 container">
+
+                <div class="col-12">
+
+                    <div class="example">
+                        <div class="description">
+                            <div class="description-text">
+                                <h3>Caisse</h3>
+                            </div>
+                        </div>
+                        <div class="source-preview-wrapper"><div class="preview">
+                          <div class="preview-elements">
+                              <div class="preview-tables">
+                        <table id="sample-data-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Date de réception</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Description</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                        <div class="table-header">
+                                            <span class="column-title">Montant</span>
+                                        </div>
+                                    </th>
+                                    <th class="secondary-text">
+                                      <div class="table-header">
+                                          <span class="column-title">Donnateur</span>
+                                      </div>
+                                  </th>
+                                  <th class="secondary-text">
+                                          <div class="table-header">
+                                              <span class="column-title">Opération</span>
+                                          </div>
+                                      </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let m of listArgent">
+                                  <td>{{m.date_don}}</td>
+                                    <td>{{m.description_don}}</td>
+                                    <td>{{m.montant}}</td>
+                                      <div *ngIf="m.donneur.type_donneur==='physiq'">
+                                          <td>{{m.donneur.nom}} &nbsp; {{m.donneur.prenom}}</td>
+                                      </div>
+                                      <div *ngIf="m.donneur.type_donneur==='morale'">
+                                              <td>{{m.donneur.nom_moral}}</td>
+                                          </div>
+                                    <td>
+                                            <button id="details" data-toggle="modal" data-target="#modalId" data-keyboard="true" (click)="details(m.receveur_don.code_employe,m.donneur)"><span class="icon icon-account-card-details"></span></button>
+                                          </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <!--fin tableau-->
+                            <br>
+                            <div class="pull-right">
+                            <a class="btn btn-secondary" href="http://localhost:8002/assocSat/report/entrees">Imprimer</a>
+                            <div>
+                            </div>
+                            </div>
+            </div>
+              </div>
+              </div>
+
+

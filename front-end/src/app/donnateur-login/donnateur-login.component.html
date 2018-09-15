@@ -1,0 +1,89 @@
+<div class="content-wrapper">
+  <div class="content">
+      <div id="login" class="p-8">
+
+<div class="form-wrapper md-elevation-8 p-8">
+
+  <div class="logo bg-secondary">
+      <span>F</span>
+  </div>
+
+  <div class="title mt-4 mb-8">Authentification du donateur</div>
+
+  <form name="loginForm" novalidate (submit)="login()" >
+
+      <div class="form-group mb-4">
+          <input type="email" class="form-control" id="loginFormInputEmail" name="email" [(ngModel)]="email" aria-describedby="emailHelp"
+                 placeholder=" "/>
+          <label for="loginFormInputEmail">Adresse Email</label>
+      </div>
+
+      <div class="form-group mb-4">
+          <input type="password" class="form-control" id="loginFormInputPassword" name="password" [(ngModel)]="password"  placeholder="Password"/>
+          <label for="loginFormInputPassword">Mot de passe</label>
+      </div>
+
+      <div class="remember-forgot-password row no-gutters align-items-center justify-content-between pt-4">
+
+          <div class="form-check remember-me mb-4">
+              <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" aria-label="Remember Me"/>
+                  <span class="checkbox-icon"></span>
+                  <span class="form-check-description">Se rappeler de moi</span>
+              </label>
+          </div>
+
+          <a class="forgot-password text-secondary mb-4" (click)="forgotPassword()">Mot de passe oublié?</a>
+      </div>
+
+      <button type="submit" class="submit-button btn btn-block btn-secondary my-4 mx-auto" aria-label="LOG IN">
+          S'authentifier
+      </button>
+
+  </form>
+
+  <div class="separator">
+      <span class="text">OR</span>
+  </div>
+
+  <button type="submit" class="google btn btn-block btn-secondary my-2 mx-auto" aria-label="LOG IN">
+          <span>
+              <i class="icon-google-plus s-4"></i>
+              <span>Se connecter avec Google</span>
+          </span>
+  </button>
+
+  <button type="submit" class="facebook btn btn-block btn-secondary my-2 mx-auto" aria-label="LOG IN">
+          <span>
+              <i class="icon-facebook s-4"></i>
+              <span>Se connecter avec Facebook</span>
+          </span>
+  </button>
+
+  <div class="register d-flex flex-column flex-sm-row align-items-center justify-content-center mt-8 mb-6 mx-auto">
+      <span class="text mr-sm-2">vous êtes un adhérent?</span>
+      <a class="link text-secondary" (click)="navigateToAdherentAuth()">se conneter</a>
+  </div>
+
+</div>
+</div>
+  </div>
+
+</div>
+<button id="testLogin" data-toggle="modal" data-target="#modalId" data-keyboard="true" #closeModal></button>
+
+<div class="modal fade" id="modalId">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4><i>L'accés de l'utilisateur</i></h4>
+              <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>Email ou mot de passe incorrect. Veuillez réessayer !</p>
+          </div>
+      </div>
+  </div>
+</div>

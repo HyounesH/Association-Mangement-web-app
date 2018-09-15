@@ -1,0 +1,137 @@
+
+<div class="content-wrapper">
+
+
+
+  <div class="content">
+      <div class="doc data-table-doc page-layout simple full-width">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-4"><h3 class="doc-title" id="content">
+<span class="icon s-8 icon-view-list"></span>
+Details de l'adhérent</h3></div>
+<!-- / HEADER -->
+
+<!-- CONTENT -->
+<div class="page-content row p-6 container">
+  <div class="col-12">
+      <div class="source-preview-wrapper"><div class="preview"><div class="preview-elements">
+        <div class="card ">
+          <div class="row row-top">
+            <div class="col-3">
+            <img src="{{imgData}}" class="card-img-top" />
+            </div>
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="alert alert-secondary col-9">Profession de l'adhérent</div>
+                <div class="card-text">
+                     <div class="row">
+                      <div class="col-4">
+                        <p><strong>Nom de profession</strong></p>
+                        <p><strong>Description</strong></p>
+                      </div>
+                      <div class="col-8">
+                        <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{profession.prefession_nom}}</p>
+                        <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{profession.profession_note}}</p>
+                      </div>
+                     </div>
+                </div>
+              </div>
+              </div>
+            <div class="card-body row" >
+                <div class="col-5">
+                  <div class="card-text">
+                    <div class="row">
+                        <div class="col-5">
+                            <p><strong>Nom Complet</strong></p>
+                            <p><strong>Email</strong></p>
+                            <p><strong>Télephone</strong></p>
+                            <p><strong>CIN</strong></p>
+                            <p><strong>Date de naissance</strong></p>
+                            <p><strong>Lieu de naissance</strong></p>
+                            <p><strong>Date d'adhésion</strong></p>
+                            <p><strong>Numéro de vote</strong></p>
+                            <p><strong>Sexe</strong></p>
+                         </div>
+                        <div class="col-7">
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.nom_adherent+" "+adherent.prenom_adherent}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.email}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.telephone}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.cin}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.dateDeNaissance}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.lieuDeNaissance}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.dateAdhesion}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.numeroVote}}</p>
+                         <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adherent.sexe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" id="middle">
+              <div class="alert alert-secondary col-9">Adresse de l'adhérent</div>
+              <div class="card-text">
+                <div class="row">
+                  <div class="col-5">
+                    <p><strong>Quartier</strong></p>
+                    <p><strong>Ville</strong></p>
+                    <p><strong>Pays</strong></p>
+                    <p><strong>Code postal</strong></p>
+                    <p><strong>adresse complémentaire</strong></p>
+                  </div>
+                  <div class="col-7">
+                    <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adresse.quartier}}</p>
+                    <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adresse.ville}}</p>
+                    <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adresse.pays}}</p>
+                    <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adresse.codePostal}}</p>
+                    <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{adresse.complAdresse}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="alert alert-secondary col-8">Service</div>
+              <div class="card-text">
+                 <div class="row">
+                   <div class="col-5">
+                     <p><strong>Nom de service</strong></p>
+                     <p><strong>adresse</strong></p>
+                   </div>
+                   <div class="col-7">
+                     <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{service.nom}}</p>
+                     <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{service.adresse}}</p>
+                   </div>
+                 </div>
+              </div>
+            </div>
+            <div class="col-6">
+                <div class="alert alert-secondary col-8">Bureau de vote de l'adhérent </div>
+                <div class="card-text">
+                   <div class="row">
+                     <div class="col-5">
+                       <p><strong>Nom de bureau de vote</strong></p>
+                       <p><strong>adresse de bureau de vote</strong></p>
+                     </div>
+                     <div class="col-7">
+                       <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{bv.nom_bureauVote}}</p>
+                       <p><strong>:</strong>&nbsp;&nbsp;&nbsp;{{bv.adresse}}</p>
+                     </div>
+                   </div>
+                </div>
+              </div>
+            <!--<div class="card-footer text-muted" >
+                2 days ago
+            </div> -->
+        </div>
+        <div>
+          <button class="badge badge-secondary" (click)="back()"><span class="icon s-10 icon-arrow-left-thick"></span></button>
+        </div>
+        </div></div>
+
+    </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+

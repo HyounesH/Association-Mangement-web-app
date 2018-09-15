@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "assoc-easy"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "./dist/vendor/animate.css/animate.min.css",
+        "./dist/icons/fuse-icon-font/style.css",
+        "./dist/vendor/pnotify/pnotify.custom.min.js",
+        "./dist/vendor/nvd3/build/nv.d3.min.css",
+        "./dist/vendor/perfect-scrollbar/css/perfect-scrollbar.min.css",
+        "./dist/vendor/fuse-html/fuse-html.min.css",
+        "./dist/css/main.css"
+      ],
+
+      "scripts": [
+        "./dist/vendor/jquery/dist/jquery.min.js",
+        "./dist/vendor/mobile-detect/mobile-detect.min.js",
+        "./dist/vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js",
+        "./dist/vendor/popper.js/index.js",
+        "./dist/vendor/bootstrap/bootstrap.min.js",
+        "./dist/vendor/d3/d3.min.js",
+        "./dist/vendor/nvd3/build/nv.d3.min.js",
+        "./dist/vendor/datatables.net/js/jquery.dataTables.min.js",
+        "./dist/vendor/datatables-responsive/js/dataTables.responsive.js",
+        "./dist/vendor/pnotify/pnotify.custom.min.js",
+        "./dist/vendor/fuse-html/fuse-html.min.js",
+        "./dist/js/main.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

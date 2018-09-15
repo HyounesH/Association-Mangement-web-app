@@ -1,0 +1,321 @@
+<div class="content-wrapper">
+
+
+
+  <div class="content">
+      <div class="doc data-table-doc page-layout simple full-width">
+
+<!-- HEADER -->
+<div class="page-header bg-secondary text-auto p-6"><h3 class="doc-title" id="content">
+<span class="icon s-8 icon-format-list-numbers"></span>
+Liste des dons</h3></div>
+<!-- / HEADER -->
+
+<!-- CONTENT -->
+<div class="page-content row p-6 container">
+
+  <div class="col-12">
+
+      <div class="example">
+          <div class="description">
+              <div class="description-text">
+                  <h3>Liste des dons</h3>
+              </div>
+          </div>
+          <div class="source-preview-wrapper"><div class="preview">
+            <div class="preview-elements"><div class="preview-tables">
+          <table id="sample-data-table" class="table">
+              <thead>
+                  <tr>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Date de réception</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Description</span>
+                          </div>
+                      </th>
+                      <th class="secondary-text">
+                          <div class="table-header">
+                              <span class="column-title">Opération</span>
+                          </div>
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let d of listDon">
+                    <td>{{d.date_don}}</td>
+                      <td>{{d.description_don}}</td>
+                      <td><button data-toggle="modal" data-target="#modalModifier" data-keyboard="true" (click)="updateDon(d)"><span class="icon icon-update" ></span></button>&nbsp;&nbsp;
+                          <button data-toggle="modal" data-target="#modalDetails" data-keyboard="true" (click)="detailsDon(d)"> <span class="icon icon-account-card-details"></span></button>&nbsp;&nbsp;
+                          <button data-toggle="modal" data-target="#modalId" data-keyboard="true" (click)="deleteDon(d)"><span class="icon icon-delete"></span></button>
+                        </td>
+                  </tr>
+              </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              <div class="modal fade" id="modalId" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Suppression d'un don</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>voulez-vous vraiment supprimer le don ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+                            <button type="button" class="btn btn-primary" (click)="delete()">Confirmer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="modalDetails" >
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title">Détails </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                              <div class="container-fluid bd-example-row">
+                                  <h6>Don</h6>
+                                  <div class="row">
+                                      <div class="col-md-4"><b> Date réception : </b></div>
+                                      {{don.date_don}}
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-4"><b> Description : </b></div>
+                                      {{don.description_don}}
+                                  </div>
+                                  <div *ngIf="don.type_don==='matr'">
+                                    <div class="row">
+                                        <div class="col-md-4"><b> etat : </b></div>
+                                        {{don.etat}}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><b> Date de sortie : </b></div>
+                                        {{don.dateSortie}}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4"><b> Lieu de sortie : </b></div>
+                                        {{don.lieuSortie}}
+                                    </div>
+                                  </div>
+                                  <div *ngIf="don.type_don==='espc'">
+                                      <div class="row">
+                                          <div class="col-md-4"><b> Montant : </b></div>
+                                          {{don.montant}}
+                                      </div>
+                                  </div>
+                                  <div *ngIf="don.type_don==='cheq'">
+                                      <div class="row">
+                                          <div class="col-md-4"><b> montant : </b></div>
+                                          {{don.montant}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b> N° compte bancaire: </b></div>
+                                          {{don.num_compte_banque}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b> date de cheque : </b></div>
+                                          {{don.date_cheque}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b> nom de la banque : </b></div>
+                                          {{don.nom_banque}}
+                                      </div>
+                                  </div>
+                                  <div *ngIf="don.type_don==='vers'">
+                                      <div class="row">
+                                          <div class="col-md-4"><b> montant : </b></div>
+                                          {{don.montant}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b> N°compte bancaire: </b></div>
+                                          {{don.num_compte_banque}}
+                                      </div>
+                                  </div>
+                                  <br/>
+                                  <h6>Donnateur </h6>
+                                  <div *ngIf="don.donneur.type_donneur==='physiq'">
+                                          <div class="row">
+                                                  <div class="col-md-4"><b>CIN : </b> </div>
+                                                  {{don.donneur.cin}}
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-md-4"><b>Nom Complet : </b></div>
+                                                   {{don.donneur.nom}}&nbsp;{{don.donneur.prenom}}
+                                              </div>
+                                      </div>
+                                      <div *ngIf="don.donneur.type_donneur==='morale'">
+                                              <div class="row">
+                                                  <div class="col-md-4"><b>Nom : </b></div>
+                                                  {{don.donneur.nom_moral}}
+                                              </div>
+                                          </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Email : </b></div>
+                                          {{don.donneur.email}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Téléphone : </b></div>
+                                          {{don.donneur.telephone}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Adresse : </b></div>
+                                          {{don.donneur.adresse}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Ville : </b></div>
+                                          {{don.donneur.ville}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Pays : </b></div>
+                                          {{don.donneur.pays}}
+                                      </div>
+
+                                  <br>
+                                  <h6>Receveur du don </h6>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>CIN : </b> </div>
+                                          {{adherent.cin}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Nom Complet : </b></div>
+                                          {{adherent.nom_adherent}}&nbsp;{{adherent.prenom_adherent}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Email : </b></div>
+                                          {{adherent.email}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Téléphone : </b></div>
+                                          {{adherent.telephone}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Adresse : </b></div>
+                                          {{adherent.adresse.complAdresse+" "+adherent.adresse.quartier}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Ville : </b></div>
+                                          {{adherent.adresse.ville}}
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4"><b>Pays : </b></div>
+                                          {{adherent.adresse.pays}}
+                                      </div>
+                                  </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModal>Fermer</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+          <!-- Modal de la modification don -->
+<div class="modal fade" id="modalModifier">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Modification d'un don</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                  <div class="form-group" [formGroup]="donForm">
+                        <label for="description" class="form-control-label">Description :</label>
+                        <input type="text" class="form-control" id="description" name="description_don" [(ngModel)]="don.description_don"  placeholder="Description" formControlName="description_don" />
+                        <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty ||description.touched )">
+                          <div *ngIf="description.hasError('required')">ce champ est obligatoire </div>
+                        </div>
+                  </div>
+                  <div class="form-group" [formGroup]="donForm">
+                        <label for="dateDon" class="form-control-label">Date  de don:</label>
+                        <input type="date" class="form-control" id="dateDon" name="date_don" [(ngModel)]="don.date_don"  placeholder="Date de don" formControlName="date_don"/>
+                        <div class="alert alert-danger" *ngIf="donDate.invalid && (donDate.dirty ||donDate.touched )">
+                          <div *ngIf="donDate.hasError('required')">la date de don est obligatoire </div>
+                        </div>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='matr'">
+                    <label for="date" class="form-control-label">Date  de sortie:</label>
+                    <input type="date" class="form-control" id="date" name="dateSortie" [(ngModel)]="don.dateSortie"  placeholder="Date de sortie"/>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='matr'">
+                    <label for="montant" class="form-control-label">Lieu de sorie:</label>
+                    <input type="text" class="form-control" id="montant" name="lieuSortie" [(ngModel)]="don.lieuSortie"  placeholder="Lieu de Sortie"/>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='matr'" [formGroup]="donForm">
+                    <label for="etat" class="form-control-label">Etat:</label>
+                         <select class="form-control" id="etat" name="etat" [(ngModel)]="don.etat" formControlName="etat" >
+                           <option value="livrer">Livré</option>
+                           <option value="recu">Reçu</option>
+                         </select>
+                </div>
+                  <div class="form-group" *ngIf="don.type_don!='matr'" [formGroup]="donForm">
+                    <label for="montant" class="form-control-label">Montant:</label>
+                    <input type="text" class="form-control" id="montant" name="montant" [(ngModel)]="don.montant"  placeholder="Montant" formControlName="montant"/>
+                    <div class="alert alert-danger" *ngIf="donMontant.invalid && (donMontant.dirty ||donMontant.touched )">
+                      <div *ngIf="donMontant.hasError('required')">le montant  est obligatoire </div>
+                      <div *ngIf="donMontant.hasError('pattern')">Le montant ne contient que des chiffres</div>
+                    </div>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='vers' || don.type_don==='cheq'">
+                      <label for="numCompteBanque" class="form-control-label">N° compte bancaire :</label>
+                      <input type="text" class="form-control" id="numCompteBanque" name="num_compte_banque" [(ngModel)]="don.num_compte_banque"  placeholder="N° compte bancaire" formControlName="num_compte_banque"/>
+                      <div class="alert alert-danger" *ngIf="compteNumberBanc.invalid && (compteNumberBanc.dirty ||compteNumberBanc.touched )">
+                        <div *ngIf="compteNumberBanc.hasError('required')">ce champ est obligatoire </div>
+                        <div *ngIf="compteNumberBanc.hasError('pattern')">Le numéro de compte bancaire ne contient que des chiffres</div>
+                      </div>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='cheq'"[formGroup]="donForm">
+                      <label for="dateCheque" class="form-control-label">Date de cheque :</label>
+                      <input type="date" class="form-control" id="dateCheque" name="date_cheque" [(ngModel)]="don.date_cheque"  placeholder="Date de cheque" formControlName="date_cheque"/>
+                      <div class="alert alert-danger" *ngIf="chequeDate.invalid && (chequeDate.dirty ||chequeDate.touched )">
+                        <div *ngIf="chequeDate.hasError('required')">ce champ est obligatoire </div>
+                      </div>
+                  </div>
+                  <div class="form-group" *ngIf="don.type_don==='cheq'" [formGroup]="donForm">
+                      <label for="nomBanque" class="form-control-label">Nom banque :</label>
+                      <input type="text" class="form-control" id="nomBanque" name="nom_banque" [(ngModel)]="don.nom_banque"  placeholder="Nom banque" formControlName="nom_banque"/>
+                      <div class="alert alert-danger" *ngIf="bancName.invalid && (bancName.dirty ||bancName.touched )">
+                        <div *ngIf="bancName.hasError('required')">le nom de la banque est obligatoire </div>
+                        <div *ngIf="bancName.hasError('pattern')">le nom de la banque ne contient que des lettres</div>
+                      </div>
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeModalModif>Fermer</button>
+                <button type="button" class="btn btn-primary" (click)="updateDonF()">Modifier</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Fin du Modal de la modification d'un don -->
+
+
+
+
